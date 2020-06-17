@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WebApi_Client.Models;
 
 namespace WebApi_Client
 {
@@ -20,6 +21,7 @@ namespace WebApi_Client
     /// </summary>
     public partial class MainWindow : Window
     {
+        Device Device = new Device();
         public MainWindow()
         {
             InitializeComponent();
