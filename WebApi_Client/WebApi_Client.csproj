@@ -70,7 +70,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\Device.cs" />
-    <Compile Include="Models\DeviceContent.cs" />
     <Compile Include="Models\Spectrum.cs" />
     <Compile Include="Models\SpectrumData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
