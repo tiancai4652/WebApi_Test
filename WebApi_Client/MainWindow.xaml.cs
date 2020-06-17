@@ -22,9 +22,22 @@ namespace WebApi_Client
     public partial class MainWindow : Window
     {
         Device Device = new Device();
+        int count;
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void btnNew_Click(object sender, RoutedEventArgs e)
+        {
+            txtId.Text = Guid.NewGuid().ToString("N");
+            txtId.Name = $"Instance{count}";
+            count++;
+        }
+
+        private void btnInsert_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

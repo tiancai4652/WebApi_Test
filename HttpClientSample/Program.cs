@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HttpClientSample.Models;
+using System;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -6,25 +7,21 @@ using System.Threading.Tasks;
 
 namespace HttpClientSample
 {
-    public class Product
-    {
-        public string Id { get; set; }
-        public string Name { get; set; }
-        public decimal Price { get; set; }
-        public string Category { get; set; }
-    }
+    
 
     class Program
     {
         static HttpClient client = new HttpClient();
 
-        static void ShowProduct(Product product)
+        static void ShowProduct(Device product)
         {
-            Console.WriteLine($"Name: {product.Name}\tPrice: " +
-                $"{product.Price}\tCategory: {product.Category}");
+            Console.WriteLine($"Name: {product.Name}" +
+                //$"\tPrice: " +
+                //$"{product.Price}\tCategory: {product.Category}" +
+                $"");
         }
 
-        static async Task<Uri> CreateProductAsync(Product product)
+        static async Task<Uri> CreateProductAsync(Device product)
         {
             HttpResponseMessage response = await client.PostAsJsonAsync(
                 "api/products", product);
@@ -34,25 +31,25 @@ namespace HttpClientSample
             return response.Headers.Location;
         }
 
-        static async Task<Product> GetProductAsync(string path)
+        static async Task<Device> GetProductAsync(string path)
         {
-            Product product = null;
+            Device product = null;
             HttpResponseMessage response = await client.GetAsync(path);
             if (response.IsSuccessStatusCode)
             {
-                product = await response.Content.ReadAsAsync<Product>();
+                product = await response.Content.ReadAsAsync<Device>();
             }
             return product;
         }
 
-        static async Task<Product> UpdateProductAsync(Product product)
+        static async Task<Device> UpdateProductAsync(Device product)
         {
             HttpResponseMessage response = await client.PutAsJsonAsync(
-                $"api/products/{product.Id}", product);
+                $"api/products/{product.ID}", product);
             response.EnsureSuccessStatusCode();
 
             // Deserialize the updated product from the response body.
-            product = await response.Content.ReadAsAsync<Product>();
+            product = await response.Content.ReadAsAsync<Device>();
             return product;
         }
 
@@ -79,11 +76,9 @@ namespace HttpClientSample
             try
             {
                 // Create a new product
-                Product product = new Product
+                Device product = new Device
                 {
-                    Name = "Gizmo",
-                    Price = 100,
-                    Category = "Widgets"
+                    Name = "Name",
                 };
 
                 var url = await CreateProductAsync(product);
@@ -95,7 +90,7 @@ namespace HttpClientSample
 
                 // Update the product
                 Console.WriteLine("Updating price...");
-                product.Price = 80;
+                product.Name = "Name_Update";
                 await UpdateProductAsync(product);
 
                 // Get the updated product
@@ -103,7 +98,7 @@ namespace HttpClientSample
                 ShowProduct(product);
 
                 // Delete the product
-                var statusCode = await DeleteProductAsync(product.Id);
+                var statusCode = await DeleteProductAsync(product.ID);
                 Console.WriteLine($"Deleted (HTTP Status = {(int)statusCode})");
 
             }
