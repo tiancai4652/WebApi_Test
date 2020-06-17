@@ -24,7 +24,7 @@ namespace HttpClientSample
         static async Task<Uri> CreateProductAsync(Device product)
         {
             HttpResponseMessage response = await client.PostAsJsonAsync(
-                "api/products", product);
+                "api/Devices", product);
             response.EnsureSuccessStatusCode();
 
             // return URI of the created resource.
@@ -45,7 +45,7 @@ namespace HttpClientSample
         static async Task<Device> UpdateProductAsync(Device product)
         {
             HttpResponseMessage response = await client.PutAsJsonAsync(
-                $"api/products/{product.ID}", product);
+                $"api/Devices/{product.ID}", product);
             response.EnsureSuccessStatusCode();
 
             // Deserialize the updated product from the response body.
@@ -56,7 +56,7 @@ namespace HttpClientSample
         static async Task<HttpStatusCode> DeleteProductAsync(string id)
         {
             HttpResponseMessage response = await client.DeleteAsync(
-                $"api/products/{id}");
+                $"api/Devices/{id}");
             return response.StatusCode;
         }
 
@@ -67,8 +67,9 @@ namespace HttpClientSample
 
         static async Task RunAsync()
         {
-            // Update port # in the following line.
-            client.BaseAddress = new Uri("http://localhost:64195/");
+        // Update port # in the following line.
+        //https://localhost:5001/api/Devices
+            client.BaseAddress = new Uri("https://localhost:5001/");
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(
                 new MediaTypeWithQualityHeaderValue("application/json"));
@@ -78,7 +79,8 @@ namespace HttpClientSample
                 // Create a new product
                 Device product = new Device
                 {
-                    Name = "Name",
+                    ID=Guid.NewGuid().ToString(),
+                    Name = "Name"
                 };
 
                 var url = await CreateProductAsync(product);
