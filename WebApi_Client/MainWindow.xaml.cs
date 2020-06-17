@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Utility.Standard;
 using WebApi_Client.Models;
 
 namespace WebApi_Client
@@ -30,9 +31,38 @@ namespace WebApi_Client
 
         private void btnNew_Click(object sender, RoutedEventArgs e)
         {
-            txtId.Text = Guid.NewGuid().ToString("N");
-            txtId.Name = $"Instance{count}";
-            count++;
+            Device.ID = Guid.NewGuid().ToString("N");
+            Device.Name = $"Instance{count}";
+            Device.Spectrum = new List<Spectrum>();
+
+            Spectrum spectrum = new Spectrum();
+            spectrum.ID = Guid.NewGuid().ToString("N");
+            spectrum.Name = $"spectrum{count}";
+            spectrum.Data = new List<SpectrumData>();
+
+            RSpcFile rSpcFile = new RSpcFile();
+            rSpcFile.Open("0.spc");
+            float[] xList;
+            float[] yList;
+            rSpcFile.Read(out xList, out yList);
+            rSpcFile.Close();
+            var length = xList.Length > yList.Length ? yList.Length : xList.Length;
+            for (uint uIndex = 0; uIndex < length; uIndex++)
+            {
+                spectrum.Data.Add(
+                    new SpectrumData()
+                    {
+                        ID = $"{spectrum.ID}{uIndex}",
+                        X = xList[uIndex],
+                        Y = yList[uIndex]
+                    });
+            }
+
+            txtShow.AppendText(
+                $"New Instance:" +
+                $"\tDevice.ID:{Device.ID}" +
+                 $"\tDevice.Name:{Device.Name}" +$"\tDevice.Data:..."
+                );
         }
 
         private void btnInsert_Click(object sender, RoutedEventArgs e)

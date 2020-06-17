@@ -13,11 +13,10 @@
         </Grid.ColumnDefinitions>
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="150"/>
                 <RowDefinition Height="50"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <Grid>
+            <!--<Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="100"/>
                     <ColumnDefinition/>
@@ -42,8 +41,8 @@
                     </Grid>
                     <Button Grid.Column="1" Width="50" Height="25" Margin="5">...</Button>
                 </Grid>
-            </Grid>
-            <Grid Grid.Row="1">
+            </Grid>-->
+            <Grid Grid.Row="0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="100"/>
                     <ColumnDefinition/>
@@ -51,7 +50,7 @@
                 <TextBlock  Grid.Row="1" HorizontalAlignment="Right" Margin="10" VerticalAlignment="Center">API</TextBlock>
                 <TextBox Grid.Row="1" Grid.Column="1" Margin="2" HorizontalAlignment="Stretch" Height="25"></TextBox>
             </Grid>
-            <Grid Grid.Row="2">
+            <Grid Grid.Row="1">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="50"/>
                     <RowDefinition/>
@@ -70,7 +69,7 @@
             </Grid>
         </Grid>
         <Grid Grid.Column="1">
-            <RichTextBox></RichTextBox>
+            <RichTextBox x:Name="txtShow"></RichTextBox>
         </Grid>
       
     </Grid>
