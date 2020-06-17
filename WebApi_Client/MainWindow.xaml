@@ -14,6 +14,8 @@
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <!--<Grid>
@@ -48,28 +50,45 @@
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <TextBlock  Grid.Row="1" HorizontalAlignment="Right" Margin="10" VerticalAlignment="Center">API</TextBlock>
-                <TextBox Grid.Row="1" Grid.Column="1" Margin="2" HorizontalAlignment="Stretch" Height="25"></TextBox>
+                <TextBox Name="txtURI" Grid.Row="1" Grid.Column="1" Margin="2" HorizontalAlignment="Stretch" Height="25"></TextBox>
             </Grid>
             <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <TextBlock  Grid.Row="1" HorizontalAlignment="Right" Margin="10" VerticalAlignment="Center">Request</TextBlock>
+                <TextBox Name="txtRequest" Grid.Row="1" Grid.Column="1" Margin="2" HorizontalAlignment="Stretch" Height="25"></TextBox>
+            </Grid>
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <TextBlock  Grid.Row="1" HorizontalAlignment="Right" Margin="10" VerticalAlignment="Center">id</TextBlock>
+                <TextBox Name="txtID" Grid.Row="1" Grid.Column="1" Margin="2" HorizontalAlignment="Stretch" Height="25"></TextBox>
+            </Grid>
+            <Grid Grid.Row="3">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="50"/>
                     <RowDefinition/>
                     <RowDefinition Height="50"/>
                 </Grid.RowDefinitions>
+                <Button Name="btnSet" Margin="20,10" Height="30" Width="100" HorizontalAlignment="Left" Click="btnSet_Click" >Set Api</Button>
                 <Button Name="btnNew" Margin="20,10" Height="30" Width="100" HorizontalAlignment="Right" Click="btnNew_Click">New Instance</Button>
                 <WrapPanel Grid.Row="1">
                     <Button x:Name="btnInsert" Margin="20,10" Height="30" Width="80" Click="btnInsert_Click">Insert</Button>
-                    <Button Margin="20,10" Height="30" Width="80">FindAll</Button>
-                    <Button Margin="20,10" Height="30" Width="80">FindById</Button>
-                    <Button Margin="20,10" Height="30" Width="80">RemoveById</Button>
-                    <Button Margin="20,10" Height="30" Width="80">RemoveAll</Button>
-                    <Button Margin="20,10" Height="30" Width="80">Excute</Button>
+                    <Button IsEnabled="False" x:Name="btnFindAll" Margin="20,10" Height="30" Width="80" Click="btnFindAll_Click">FindAll</Button>
+                    <Button Name="btnFindById" Margin="20,10" Height="30" Width="80" Click="btnFindById_Click" >FindById</Button>
+                    <Button Name="btnRemoveById" Margin="20,10" Height="30" Width="80" Click="btnRemoveById_Click">RemoveById</Button>
+                    <Button IsEnabled="False" Margin="20,10" Height="30" Width="80">RemoveAll</Button>
+                    
                 </WrapPanel>
                 <Button Grid.Row="2" Margin="20,10" Height="30" Width="80" HorizontalAlignment="Right">Excute</Button>
             </Grid>
         </Grid>
         <Grid Grid.Column="1">
-            <RichTextBox x:Name="txtShow"></RichTextBox>
+            <RichTextBox x:Name="txtShow" ScrollViewer.VerticalScrollBarVisibility="Auto"></RichTextBox>
         </Grid>
       
     </Grid>
