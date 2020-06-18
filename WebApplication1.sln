@@ -19,6 +19,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SignalRChat", "SignalRChat\
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MSDN_SignalR_Blaor", "MSDN_SignalR_Blaor", "{B5517E74-751A-4DA5-9DFA-24AB72F0ED9D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorSignalRApp.Server", "BlazorSignalRApp\Server\BlazorSignalRApp.Server.csproj", "{C03AAC0E-DC24-4174-BD89-428B206A5669}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorSignalRApp.Client", "BlazorSignalRApp\Client\BlazorSignalRApp.Client.csproj", "{C9F50B8A-BA30-431A-9879-AA0D000889D4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorSignalRApp.Shared", "BlazorSignalRApp\Shared\BlazorSignalRApp.Shared.csproj", "{3A27085C-90F1-4F6F-B912-408EFE1C1BFE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +51,18 @@ Global
 		{14FA21C9-865E-4B23-8720-223F6E6C9796}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{14FA21C9-865E-4B23-8720-223F6E6C9796}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{14FA21C9-865E-4B23-8720-223F6E6C9796}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C03AAC0E-DC24-4174-BD89-428B206A5669}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C03AAC0E-DC24-4174-BD89-428B206A5669}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C03AAC0E-DC24-4174-BD89-428B206A5669}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C03AAC0E-DC24-4174-BD89-428B206A5669}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C9F50B8A-BA30-431A-9879-AA0D000889D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9F50B8A-BA30-431A-9879-AA0D000889D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9F50B8A-BA30-431A-9879-AA0D000889D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9F50B8A-BA30-431A-9879-AA0D000889D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A27085C-90F1-4F6F-B912-408EFE1C1BFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A27085C-90F1-4F6F-B912-408EFE1C1BFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A27085C-90F1-4F6F-B912-408EFE1C1BFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A27085C-90F1-4F6F-B912-408EFE1C1BFE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -52,6 +70,9 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{6B82C0EF-FD41-41E4-BB0B-0A1A120B0A8B} = {1B741E0D-A621-46E1-8E17-3038B5AFE925}
 		{14FA21C9-865E-4B23-8720-223F6E6C9796} = {A3C28696-2908-4113-96CA-769D38251E3C}
+		{C03AAC0E-DC24-4174-BD89-428B206A5669} = {B5517E74-751A-4DA5-9DFA-24AB72F0ED9D}
+		{C9F50B8A-BA30-431A-9879-AA0D000889D4} = {B5517E74-751A-4DA5-9DFA-24AB72F0ED9D}
+		{3A27085C-90F1-4F6F-B912-408EFE1C1BFE} = {B5517E74-751A-4DA5-9DFA-24AB72F0ED9D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C2F6BBA4-4C4E-422A-8753-A6CF74977318}
