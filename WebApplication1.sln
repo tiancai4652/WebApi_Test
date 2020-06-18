@@ -13,6 +13,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Msdn_Sample", "Msdn_Sample"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HttpClientSample", "HttpClientSample\HttpClientSample.csproj", "{6B82C0EF-FD41-41E4-BB0B-0A1A120B0A8B}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MSDN_SignalRWithJavascript_Sample", "MSDN_SignalRWithJavascript_Sample", "{A3C28696-2908-4113-96CA-769D38251E3C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SignalRChat", "SignalRChat\SignalRChat.csproj", "{14FA21C9-865E-4B23-8720-223F6E6C9796}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,12 +39,17 @@ Global
 		{6B82C0EF-FD41-41E4-BB0B-0A1A120B0A8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6B82C0EF-FD41-41E4-BB0B-0A1A120B0A8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6B82C0EF-FD41-41E4-BB0B-0A1A120B0A8B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14FA21C9-865E-4B23-8720-223F6E6C9796}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14FA21C9-865E-4B23-8720-223F6E6C9796}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14FA21C9-865E-4B23-8720-223F6E6C9796}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14FA21C9-865E-4B23-8720-223F6E6C9796}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{6B82C0EF-FD41-41E4-BB0B-0A1A120B0A8B} = {1B741E0D-A621-46E1-8E17-3038B5AFE925}
+		{14FA21C9-865E-4B23-8720-223F6E6C9796} = {A3C28696-2908-4113-96CA-769D38251E3C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C2F6BBA4-4C4E-422A-8753-A6CF74977318}
