@@ -6,7 +6,7 @@
 
 <p>This component demonstrates fetching data from the server.</p>
 
-@if (forecasts == null)
+@if (forecasts == null || devices == null)
 {
     <p><em>Loading...</em></p>
 }
@@ -33,14 +33,58 @@ else
             }
         </tbody>
     </table>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+              
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var device in devices)
+            {
+                <tr>
+                    <td>@device.ID</td>
+                    <td>@device.Name</td>
+                </tr>
+            }
+        </tbody>
+    </table>
 }
 
 @code {
     private WeatherForecast[] forecasts;
-
+    private Device[] devices;
+    private const string ServiceEndpoint = "https://localhost:5001/api/Devices";
     protected override async Task OnInitializedAsync()
     {
         forecasts = await Http.GetFromJsonAsync<WeatherForecast[]>("WeatherForecast");
+        devices = await Http.GetFromJsonAsync<Device[]>(ServiceEndpoint);
+
     }
 
+
+
+    public class Device
+    {
+        public string ID { get; set; }
+        public string Name { get; set; }
+
+        public List<Spectrum> Spectrum { get; set; }
+    }
+
+    public class Spectrum
+    {
+        public string ID { get; set; }
+        public string Name { get; set; }
+        public List<SpectrumData> Data { get; set; }
+    }
+
+    public class SpectrumData
+    {
+        public string ID { get; set; }
+        public float X { get; set; }
+        public float Y { get; set; }
+    }
 }
