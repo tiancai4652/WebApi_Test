@@ -5,6 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Models\Device.cs" />
+    <Compile Remove="Models\Spectrum.cs" />
+    <Compile Remove="Models\SpectrumData.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Remove="Properties\launchSettings.json" />
   </ItemGroup>
 
@@ -26,6 +32,10 @@
 
   <ItemGroup>
     <Folder Include="Properties\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\My.Share\My.Share.csproj" />
   </ItemGroup>
 
   <ItemGroup>

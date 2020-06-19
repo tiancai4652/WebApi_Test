@@ -16,7 +16,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Utility.Standard;
-using WebApi_Client.Models;
+using My.Share.Models;
 
 namespace WebApi_Client
 {
