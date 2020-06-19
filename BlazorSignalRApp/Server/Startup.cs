@@ -31,19 +31,19 @@ namespace BlazorSignalRApp.Server
                 opts.MimeTypes = ResponseCompressionDefaults.MimeTypes.Concat(
                     new[] { "application/octet-stream" });
             });
-            services.AddCors(options =>
-            {
-                //options.AddDefaultPolicy(
-                //    builder =>
-                //    {
-                //        builder.WithOrigins("https://localhost:44387").WithMethods("PUT", "DELETE", "GET");
-                //    });
+            //services.AddCors(options =>
+            //{
+            //    //options.AddDefaultPolicy(
+            //    //    builder =>
+            //    //    {
+            //    //        builder.WithOrigins("https://localhost:44387").WithMethods("PUT", "DELETE", "GET");
+            //    //    });
 
-                options.AddPolicy(name:"xcsd", policyBuilder =>
-                {
-                    policyBuilder.AllowAnyOrigin();
-                });
-            });
+            //    options.AddPolicy(name:"xcsd", policyBuilder =>
+            //    {
+            //        policyBuilder.AllowAnyOrigin();
+            //    });
+            //});
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -67,7 +67,12 @@ namespace BlazorSignalRApp.Server
             app.UseStaticFiles();
 
             app.UseRouting();
-            app.UseCors("xcsd");
+            app.UseCors(config =>
+            {
+                config.AllowAnyOrigin();
+                config.AllowAnyMethod();
+                config.AllowAnyHeader();
+            });
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapHub<ChatHub>("/chathub");
