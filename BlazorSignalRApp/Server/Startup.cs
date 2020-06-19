@@ -39,9 +39,9 @@ namespace BlazorSignalRApp.Server
                 //        builder.WithOrigins("https://localhost:44387").WithMethods("PUT", "DELETE", "GET");
                 //    });
 
-                options.AddDefaultPolicy(policyBuilder =>
+                options.AddPolicy(name:"xcsd", policyBuilder =>
                 {
-                    policyBuilder.AllowAnyOrigin().Build();
+                    policyBuilder.AllowAnyOrigin();
                 });
             });
         }
@@ -67,7 +67,7 @@ namespace BlazorSignalRApp.Server
             app.UseStaticFiles();
 
             app.UseRouting();
-            app.UseCors();
+            app.UseCors("xcsd");
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapHub<ChatHub>("/chathub");
