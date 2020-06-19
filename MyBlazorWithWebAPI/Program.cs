@@ -17,7 +17,13 @@ namespace MyBlazorWithWebAPI
             var builder = WebAssemblyHostBuilder.CreateDefault(args);
             builder.RootComponents.Add<App>("app");
 
-            builder.Services.AddTransient(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
+            builder.Services.AddHttpClient("ServerAPI", client =>
+            {
+                client.BaseAddress = new Uri(@"https://localhost:5001");
+                client.DefaultRequestHeaders.Add("Accept", "application/json");
+            });
+
+            //builder.Services.AddTransient(sp => new HttpClient { BaseAddress = new Uri("http://localhost:5000") });
 
             await builder.Build().RunAsync();
         }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -10,6 +11,7 @@ using WebApplication1.Models;
 
 namespace WebApplication1.Controllers
 {
+    [EnableCors("any")]
     [Route("api/Devices")]
     [ApiController]
     public class DevicesController : ControllerBase
@@ -30,6 +32,7 @@ namespace WebApplication1.Controllers
 
         // GET: api/Devices/5
         [HttpGet("{id}")]
+        [Produces("application/json")]
         public async Task<ActionResult<Device>> GetDevice(string id)
         {
            var device = await _context.Devices.Include(T => T.Spectrum).ThenInclude(T => T.Data).FirstOrDefaultAsync(T=>T.ID.Equals(id));

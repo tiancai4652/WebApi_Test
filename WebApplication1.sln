@@ -33,9 +33,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorWebassemblyApisite", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Mine", "Mine", "{030A7429-80E7-4F8E-AEAE-350A842F7BF4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyBlazorWithWebAPI", "MyBlazorWithWebAPI\MyBlazorWithWebAPI.csproj", "{28D9C668-0024-4DB6-B08A-A2AF8D30264B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyBlazorWithWebAPI", "MyBlazorWithWebAPI\MyBlazorWithWebAPI.csproj", "{28D9C668-0024-4DB6-B08A-A2AF8D30264B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "My.Share", "My.Share\My.Share.csproj", "{0DCDECFE-A272-400E-AE75-8B81111C56F4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "My.Share", "My.Share\My.Share.csproj", "{0DCDECFE-A272-400E-AE75-8B81111C56F4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

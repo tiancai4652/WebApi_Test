@@ -1,0 +1,39 @@
+﻿@page "/spectrum/list"
+
+@using My.Share.Models
+@inject IHttpClientFactory ClientFactory
+
+<h1>List</h1>
+
+<table class="table">
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+
+    </tr>
+    @if (_stutdents != null)
+    {
+        foreach (var item in _stutdents)
+        {
+            <tr>
+                <td>@item.ID</td>
+                <td>@item.Name</td>
+            </tr>
+        }
+    }
+
+</table>
+
+@code {
+    private IEnumerable<Device> _stutdents;
+    protected async override Task OnInitializedAsync()
+    {
+        try
+        {
+            var client = ClientFactory.CreateClient("ServerAPI");
+            _stutdents = await client.GetFromJsonAsync<IEnumerable<Device>>("/api/Devices");
+        }
+        catch (Exception ex) { Console.WriteLine("Herehere"+Environment.NewLine+ ex.Message); }
+    }
+
+}

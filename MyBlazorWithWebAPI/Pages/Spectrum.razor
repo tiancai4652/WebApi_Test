@@ -1,0 +1,43 @@
+﻿@page "/spectrum"
+@inject HttpClient Http
+@using My.Share.Models
+
+    <h1>Spectrum</h1>
+
+<p>This component demonstrates fetching data from the server.</p>
+
+@if (Device == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var device in Device)
+            {
+                <tr>
+                    <td>@device.ID</td>
+                    <td>@device.Name</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private IEnumerable<Device> Device;
+
+    protected override async Task OnInitializedAsync()
+    {
+        Device = await Http.GetFromJsonAsync<IEnumerable<Device>>("api/Devices");
+    }
+
+  
+}
