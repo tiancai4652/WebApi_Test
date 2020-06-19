@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30204.135
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApplication1", "WebApplication1\WebApplication1.csproj", "{83489F0A-EB2C-4538-A346-5FADB7C19A40}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyWebAPI", "WebApplication1\MyWebAPI.csproj", "{83489F0A-EB2C-4538-A346-5FADB7C19A40}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi_Client", "WebApi_Client\WebApi_Client.csproj", "{87048B05-739E-4F6B-814A-8D48AA895D8C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyWebApi_Client_WPF", "WebApi_Client\MyWebApi_Client_WPF.csproj", "{87048B05-739E-4F6B-814A-8D48AA895D8C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utility", "Utility\Utility.csproj", "{39A10D2C-FD99-4A99-B46F-B0B5908F9B89}"
 EndProject
@@ -27,9 +27,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorSignalRApp.Shared", "
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CSDN_Demo", "CSDN_Demo", "{612015DF-25D5-4043-B613-38ADA61356F8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorWebAssemblyApp", "BlazorWebAssemblyApp\BlazorWebAssemblyApp.csproj", "{FB6643B6-925D-473D-A97B-9A1CC2F7C576}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorWebAssemblyApp", "BlazorWebAssemblyApp\BlazorWebAssemblyApp.csproj", "{FB6643B6-925D-473D-A97B-9A1CC2F7C576}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorWebassemblyApisite", "BlazorWebassemblyApisite\BlazorWebassemblyApisite.csproj", "{48BE64DB-7824-41F5-983F-3A8752FA0B1E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorWebassemblyApisite", "BlazorWebassemblyApisite\BlazorWebassemblyApisite.csproj", "{48BE64DB-7824-41F5-983F-3A8752FA0B1E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Mine", "Mine", "{030A7429-80E7-4F8E-AEAE-350A842F7BF4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -82,6 +84,8 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{83489F0A-EB2C-4538-A346-5FADB7C19A40} = {030A7429-80E7-4F8E-AEAE-350A842F7BF4}
+		{87048B05-739E-4F6B-814A-8D48AA895D8C} = {030A7429-80E7-4F8E-AEAE-350A842F7BF4}
 		{6B82C0EF-FD41-41E4-BB0B-0A1A120B0A8B} = {1B741E0D-A621-46E1-8E17-3038B5AFE925}
 		{14FA21C9-865E-4B23-8720-223F6E6C9796} = {A3C28696-2908-4113-96CA-769D38251E3C}
 		{C03AAC0E-DC24-4174-BD89-428B206A5669} = {B5517E74-751A-4DA5-9DFA-24AB72F0ED9D}
