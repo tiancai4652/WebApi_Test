@@ -1,0 +1,52 @@
+﻿@page "/spectrum/Find/{id}"
+
+@using My.Share.Models
+@inject IHttpClientFactory ClientFactory
+
+<h1>List</h1>
+
+<p class="text-right">
+    <a class="btn btn-primary" href="/spectrum/List">Return</a>
+</p>
+
+<table class="table">
+    <tr>
+        <th>X</th>
+        <th>Y</th>
+
+    </tr>
+    @if (_stutdents != null)
+    {
+        foreach (var item in _stutdents)
+        {
+            <tr>
+                <td>@item.X</td>
+                <td>@item.Y</td>
+            </tr>
+        }
+    }
+
+</table>
+
+@code {
+    [Parameter]
+    public string ID { get; set; }
+
+    private IEnumerable<SpectrumData> _stutdents;
+    protected async override Task OnInitializedAsync()
+    {
+        try
+        {
+            var client = ClientFactory.CreateClient("ServerAPI");
+            var device = await client.GetFromJsonAsync<Device>("/api/Devices/"+ ID);
+            if (device.Spectrum != null && device.Spectrum.Count > 0)
+            {
+                _stutdents = device.Spectrum[0].Data;
+            }
+
+            Console.WriteLine("Herehere" + client.BaseAddress+ "/api/Devices/5");
+        }
+        catch (Exception ex) { Console.WriteLine("Herehere" + Environment.NewLine + ex.Message); }
+    }
+
+}
