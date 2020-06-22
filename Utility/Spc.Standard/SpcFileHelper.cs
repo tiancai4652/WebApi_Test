@@ -16,7 +16,6 @@ namespace Utility.Standard
             //判断Spc是否加密，如果加密，解密
             if (!spc.IsRightSpcFile(path))
             {
-                Application.DoEvents();
                 //进行解密操作
                 string sDesFile = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetModules()[0].FullyQualifiedName);
                 sDesFile = Path.Combine(sDesFile, "DesTmp.spc");
