@@ -1,0 +1,113 @@
+﻿@page "/spectrum/add"
+
+@using My.Share.Models
+@inject IHttpClientFactory ClientFactory
+@using Microsoft.Win32;
+@inject NavigationManager NavManager
+@using Utility.Standard;
+
+<h1>List</h1>
+
+<p class="text-right">
+    <a class="btn btn-primary" href="/spectrum/List">Return</a>
+</p>
+
+
+<div>
+    <div class="form-group">
+        <label>ID</label>
+        <input @bind="_device.ID" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Name</label>
+        <input @bind="_device.Name" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Spectrum.ID</label>
+        <input @bind="_device.Spectrum[0].ID" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Spectrum.Name</label>
+        <input @bind="_device.Spectrum[0].Name" class="form-control" />
+    </div>
+    <div class="form-group" >
+        <label>数据文件</label>
+        <input @bind="_dataFilePath" class="form-control" />
+        @*<p class="text-left">
+                <button class="btn btn-primary" @onclick="SelectDataFile">选择</button>
+            </p>*@
+    </div>
+
+    <button class="btn btn-primary" @onclick="TrySave">
+        保存
+    </button>
+
+    <div class="text-danger">
+        @_errmsg
+    </div>
+</div>
+
+
+@code {
+    private Device _device;
+    private string _dataFilePath;
+    private string _errmsg;
+    protected override void OnInitialized()
+    {
+        try
+        {
+            _dataFilePath = "D:\\MyCode\\Github2020\\WebAPI_Test\\WebApplication1\\WebApi_Client\\0.spc";
+            _device = new Device();
+            _device.Spectrum = new List<Spectrum>();
+            _device.Spectrum.Add(new Spectrum());
+
+        }
+        catch (Exception ex) { Console.WriteLine("Herehere" + Environment.NewLine + ex.Message); }
+    }
+
+    //void SelectDataFile()
+    //{
+    //    OpenFileDialog openFileDialog = new OpenFileDialog();
+    //    var filePathResult = openFileDialog.ShowDialog();
+    //    if (filePathResult != null && (bool)filePathResult)
+    //    {
+    //        _dataFilePath = openFileDialog.FileName;
+    //    }
+    //}
+
+    private async void TrySave()
+    {
+        //if (System.IO.File.Exists(_dataFilePath))
+        //{
+        //RSpcFile rSpcFile = new RSpcFile();
+        //rSpcFile.Open(_dataFilePath);
+        //float[] xList;
+        //float[] yList;
+        //rSpcFile.Read(out xList, out yList);
+        //rSpcFile.Close();
+        //var length = xList.Length > yList.Length ? yList.Length : xList.Length;
+        //for (uint uIndex = 0; uIndex < length; uIndex++)
+        //{
+        //    _device.Spectrum[0].Data.Add(
+        //    new SpectrumData()
+        //    {
+        //        ID = $"{ _device.Spectrum[0].ID}{uIndex}",
+        //        X = xList[uIndex],
+        //        Y = yList[uIndex]
+        //    });
+        //}
+        //}
+
+        var httpclient = ClientFactory.CreateClient("ServerAPI");
+        var result = await httpclient.PostAsJsonAsync("/api/Devices", _device);
+
+        if (result.IsSuccessStatusCode)
+        {
+            NavManager.NavigateTo("/spectrum/list");
+        }
+        else
+        {
+            _errmsg = "保存失败";
+        }
+    }
+}
