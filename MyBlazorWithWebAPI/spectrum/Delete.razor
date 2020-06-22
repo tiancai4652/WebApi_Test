@@ -1,0 +1,39 @@
+﻿@page "/spectrum/delete/{id}"
+
+
+@using My.Share.Models
+@inject IHttpClientFactory ClientFactory
+@inject NavigationManager NavManager
+@inject IJSRuntime JSRuntime
+
+<h1>Delete</h1>
+
+<h3>
+    确定删除 @Id ？
+</h3>
+
+<button class="btn btn-danger" @onclick="OnDeleteAsync">
+    删除
+</button>
+
+<button class="btn btn-info" @onclick="OnCancel">取消</button>
+
+@code {
+    [Parameter]
+    public string Id { get; set; }
+
+    private async Task OnDeleteAsync()
+    {
+        var client = ClientFactory.CreateClient("ServerAPI");
+        var result = await client.DeleteAsync("/api/Devices/" + Id);
+        if (result.IsSuccessStatusCode)
+        {
+            NavManager.NavigateTo("/spectrum/list");
+        }
+    }
+
+    private void OnCancel()
+    {
+        JSRuntime.InvokeVoidAsync("history.back");
+    }
+}
