@@ -19,7 +19,7 @@ namespace MyBlazorWithWebAPI
 
             builder.Services.AddHttpClient("ServerAPI", client =>
             {
-                client.BaseAddress = new Uri(@"http://localhost:7788");
+                client.BaseAddress = new Uri(@"http://192.168.0.115:7788");
                 client.DefaultRequestHeaders.Add("Accept", "application/json");
             });
 
