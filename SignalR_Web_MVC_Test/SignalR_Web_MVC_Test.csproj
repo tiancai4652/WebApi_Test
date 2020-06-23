@@ -148,7 +148,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="HubConnections\ChatHub.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <None Include="Views\Home\HubChat.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
