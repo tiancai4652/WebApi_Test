@@ -5,17 +5,30 @@
 
 <h1>SignalR</h1>
 
-<ul id="messagesList">
-    @foreach (var message in messages)
+<table class="table">
+    <tr>
+        <th>Id</th>
+        <th>Type</th>
+        <th>State</th>
+    </tr>
+    @if (Sides != null)
     {
-        <li>@message</li>
+        foreach (var item in Sides)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Type</td>
+                <td>@item.State</td>
+            </tr>
+        }
     }
-</ul>
+
+</table>
 
 @code {
     private HubConnection hubConnection;
     private List<string> messages = new List<string>();
-
+    List<Side> Sides = new List<Side>();
 
     protected async override Task OnInitializedAsync()
     {
@@ -27,24 +40,39 @@
                .Build();
 
 
-            hubConnection.On("Register", (string data) =>
+            hubConnection.On("Register", (string type, string id) =>
             {
-
-                messages.Add($"管理端({data}) 上线");
+                Sides.Add(new Side() { Id = id, Type = type, State = "上线" });
+                //messages.Add($"管理端({data}) 上线");
+                Sides = Sides.OrderBy(t => t.State).ToList();
                 StateHasChanged();
             });
 
             hubConnection.On("UnRegister", (string data) =>
             {
-
-                messages.Add($"管理端({data}) has UnRegister");
+                var side = Sides.FirstOrDefault(t => t.Id.Equals(data));
+                if (side != null)
+                {
+                    side.State = "下线";
+                }
+                Sides = Sides.OrderBy(t => t.State).ToList();
+                //messages.Add($"管理端({data}) has UnRegister");
                 StateHasChanged();
             });
 
             await hubConnection.StartAsync();
+
+            hubConnection.SendAsync("Register","管理").Wait();
         }
         catch (Exception ex) { Console.WriteLine("Herehere" + Environment.NewLine + ex.Message); }
 
+    }
+
+    public class Side
+    {
+        public string Id { get; set; }
+        public string Type { get; set; }
+        public string State { get; set; }
     }
 
 }
