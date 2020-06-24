@@ -1,12 +1,8 @@
 using System;
 using System.Net.Http;
-using System.Collections.Generic;
 using System.Threading.Tasks;
-using System.Text;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
 
 namespace MyBlazorWithWebAPI
 {
@@ -17,13 +13,13 @@ namespace MyBlazorWithWebAPI
             var builder = WebAssemblyHostBuilder.CreateDefault(args);
             builder.RootComponents.Add<App>("app");
 
-            builder.Services.AddHttpClient("ServerAPI", client =>
-            {
-                client.BaseAddress = new Uri(@"http://192.168.0.115:7788");
-                client.DefaultRequestHeaders.Add("Accept", "application/json");
-            });
+            //builder.Services.AddHttpClient("ServerAPI", client =>
+            //{
+            //    client.BaseAddress = new Uri(@"http://192.168.0.115:7788");
+            //    client.DefaultRequestHeaders.Add("Accept", "application/json");
+            //});
 
-            //builder.Services.AddTransient(sp => new HttpClient { BaseAddress = new Uri("http://localhost:5000") });
+            builder.Services.AddTransient(sp => new HttpClient { BaseAddress = new Uri("http://192.168.0.115:7788") });
 
             await builder.Build().RunAsync();
         }

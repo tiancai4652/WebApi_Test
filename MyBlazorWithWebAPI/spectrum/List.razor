@@ -1,7 +1,7 @@
 ﻿@page "/spectrum/list"
 
 @using My.Share.Models
-@inject IHttpClientFactory ClientFactory
+@inject HttpClient Client
 
 <h1>List</h1>
 
@@ -38,8 +38,7 @@
     {
         try
         {
-            var client = ClientFactory.CreateClient("ServerAPI");
-            _stutdents = await client.GetFromJsonAsync<IEnumerable<Device>>("/api/Devices");
+            _stutdents = await Client.GetFromJsonAsync<IEnumerable<Device>>("/api/Devices");
         }
         catch (Exception ex) { Console.WriteLine("Herehere"+Environment.NewLine+ ex.Message); }
     }
