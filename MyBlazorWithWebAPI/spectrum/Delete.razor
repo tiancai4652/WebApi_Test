@@ -2,7 +2,7 @@
 
 
 @using My.Share.Models
-@inject IHttpClientFactory ClientFactory
+@inject HttpClient Client
 @inject NavigationManager NavManager
 @inject IJSRuntime JSRuntime
 
@@ -24,8 +24,8 @@
 
     private async Task OnDeleteAsync()
     {
-        var client = ClientFactory.CreateClient("ServerAPI");
-        var result = await client.DeleteAsync("/api/Devices/" + Id);
+       
+        var result = await Client.DeleteAsync("/api/Devices/" + Id);
         if (result.IsSuccessStatusCode)
         {
             NavManager.NavigateTo("/spectrum/list");

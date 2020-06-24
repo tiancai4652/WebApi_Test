@@ -1,7 +1,7 @@
 ﻿@page "/spectrum/Find/{id}"
 
 @using My.Share.Models
-@inject IHttpClientFactory ClientFactory
+@inject HttpClient Client
 
 <h1>List</h1>
 
@@ -37,14 +37,14 @@
     {
         try
         {
-            var client = ClientFactory.CreateClient("ServerAPI");
-            var device = await client.GetFromJsonAsync<Device>("/api/Devices/"+ ID);
+           
+            var device = await Client.GetFromJsonAsync<Device>("/api/Devices/" + ID);
             if (device.Spectrum != null && device.Spectrum.Count > 0)
             {
                 _stutdents = device.Spectrum[0].Data;
             }
 
-            Console.WriteLine("Herehere" + client.BaseAddress+ "/api/Devices/5");
+            Console.WriteLine("Herehere" + Client.BaseAddress + "/api/Devices/5");
         }
         catch (Exception ex) { Console.WriteLine("Herehere" + Environment.NewLine + ex.Message); }
     }

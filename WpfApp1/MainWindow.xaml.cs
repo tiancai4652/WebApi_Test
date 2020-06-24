@@ -25,9 +25,11 @@ namespace WpfApp1
         public MainWindow()
         {
             InitializeComponent();
+            Init();
         }
 
-        private async void btnRegister_Click(object sender, RoutedEventArgs e)
+      
+        async void Init()
         {
             HttpClient client = new HttpClient
             {
