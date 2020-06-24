@@ -15,7 +15,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HttpClientSample", "HttpCli
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MSDN_SignalRWithJavascript_Sample", "MSDN_SignalRWithJavascript_Sample", "{A3C28696-2908-4113-96CA-769D38251E3C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SignalRChat", "SignalRChat\SignalRChat.csproj", "{14FA21C9-865E-4B23-8720-223F6E6C9796}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalRChat", "SignalRChat\SignalRChat.csproj", "{14FA21C9-865E-4B23-8720-223F6E6C9796}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MSDN_SignalR_Blaor", "MSDN_SignalR_Blaor", "{B5517E74-751A-4DA5-9DFA-24AB72F0ED9D}"
 EndProject

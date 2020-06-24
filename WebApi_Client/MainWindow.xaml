@@ -58,9 +58,11 @@
                             <Button Name="btnFindById" Margin="20,10" Height="30" Width="80" Click="btnFindById_Click" >FindById</Button>
                             <Button Name="btnRemoveById" Margin="20,10" Height="30" Width="80" Click="btnRemoveById_Click">RemoveById</Button>
                             <Button IsEnabled="False" Margin="20,10" Height="30" Width="80">RemoveAll</Button>
+                            <Button x:Name="btnRegister" Margin="20,10" Height="30" Width="80"  Content="Register" Click="btnRegister_Click" />
 
                         </WrapPanel>
                         <Button Grid.Row="2" Margin="20,10" Height="30" Width="80" HorizontalAlignment="Right">Excute</Button>
+                        <Button Grid.Row="2" Name="btnSend" Margin="0,10.333,250.333,9.667" Height="30" Width="80" HorizontalAlignment="Right" Content="Send" Click="btnSend_Click"/>
                     </Grid>
                 </Grid>
                 <Grid Grid.Column="1">

@@ -45,6 +45,13 @@
             StateHasChanged();
         });
 
+        hubConnection.On("Register", () =>
+        {
+          
+            messages.Add("Register");
+            StateHasChanged();
+        });
+
         await hubConnection.StartAsync();
     }
 

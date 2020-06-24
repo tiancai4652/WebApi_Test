@@ -17,6 +17,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Utility.Standard;
 using My.Share.Models;
+using Microsoft.AspNet.SignalR.Client;
 
 namespace WebApi_Client
 {
@@ -27,12 +28,14 @@ namespace WebApi_Client
     {
         static HttpClient client = new HttpClient();
         Device Device = new Device();
-        int count;
+        int count = 0;
+        private const string ServerUri = "http://192.168.0.115:7788/";
         public MainWindow()
         {
             InitializeComponent();
-            txtURI.Text = "https://localhost:5001/";
+            txtURI.Text = ServerUri;
             txtRequest.Text = "api/Devices";
+          
         }
 
         private void btnNew_Click(object sender, RoutedEventArgs e)
@@ -88,10 +91,6 @@ namespace WebApi_Client
                 new MediaTypeWithQualityHeaderValue("application/json"));
             AppendText("Set Base Api");
         }
-
-
-
-
 
         async Task<Uri> CreateProductAsync(Device product)
         {
@@ -161,6 +160,45 @@ namespace WebApi_Client
             AppendText($"Remove By Id:{txtID.Text}");
             var result = await DeleteProductAsync(txtID.Text);
             AppendText($"result:{result.ToString()}");
+        }
+
+
+        #region SignalR
+
+      
+        Microsoft.AspNet.SignalR.Client.HubConnection connection = null;
+        Microsoft.AspNet.SignalR.Client.IHubProxy rhub = null;
+
+        async void IniSignalR(string serverUri)
+        {
+            connection = new Microsoft.AspNet.SignalR.Client.HubConnection(serverUri);
+            //类名必须与服务端一致
+            //myHub = connection.CreateHubProxy("BroadcastHub");                  
+            rhub = connection.CreateHubProxy("MyHub");
+           
+
+            ////注册客户端方法名称"addMessage"与服务器端Send方法对应，对应的 callback方法 ReceiveMsg
+            rhub.On("Register", Register);
+           await connection.Start();//连接服务器  
+        }
+
+        void Register()
+        {
+            AppendText($"Register  {DateTime.Now}");
+        }
+
+
+
+        #endregion
+
+        private void btnRegister_Click(object sender, RoutedEventArgs e)
+        {
+            IniSignalR(txtURI.Text);
+        }
+
+        private void btnSend_Click(object sender, RoutedEventArgs e)
+        {
+            rhub.Invoke("ReceiveMessage", "6666").Wait();
         }
     }
 }
