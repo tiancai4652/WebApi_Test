@@ -28,10 +28,17 @@
                .Build();
 
 
-            hubConnection.On("Register", () =>
+            hubConnection.On("Register", (string data) =>
             {
 
-                messages.Add($"{hubConnection.ConnectionId}:has registered");
+                messages.Add($"管理端({data}) 上线");
+                StateHasChanged();
+            });
+
+            hubConnection.On("UnRegister", (string data) =>
+            {
+
+                messages.Add($"管理端({data}) has UnRegister");
                 StateHasChanged();
             });
 
